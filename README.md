@@ -4,15 +4,15 @@ A small multi-shop e-commerce management app built with **Laravel**.
 
 Roles:
 
-- **Admin** – manages shops, products and shop-owner accounts.
-- **Shop Owner** – browses the shared catalog, adds products to their own shop, creates their own products, and customises price / details / thumbnail **per shop**.
-- **Customer** (public, no login) – sees only products that are assigned to a shop, with that shop's price / details / thumbnail.
+- Admin – manages shops, products, and shop-owner accounts.
+- Shop Owner – browses the shared catalog, adds products to their own shop, creates their own products, and customises price/details/thumbnail per shop.
+- Customer (public, no login) – sees only products that are assigned to a shop, with that shop's price/details/thumbnail.
 
 ## Requirements
 
-- PHP **8.3+** with extensions: `pdo_sqlite`, `sqlite3`, `mbstring`, `fileinfo`, `xml`, `curl`, `zip`
+- PHP 8.3+ with extensions: `pdo_sqlite`, `sqlite3`, `mbstring`, `fileinfo`, `xml`, `curl`, `zip`
 - Composer 2
-- Node.js is **not required** (the UI uses plain inline CSS; no front-end build step)
+- Node.js is not required (the UI uses plain inline CSS; no front-end build step)
 
 SQLite is used, so you do not need to install MySQL.
 
@@ -20,24 +20,25 @@ SQLite is used, so you do not need to install MySQL.
 
 ```bash
 # 1. Clone and enter the project
-git clone <YOUR_REPO_URL> ecommerce-management
+git clone https://github.com/pronaycse/Ecommerce-Management.git ecommerce-management
 cd ecommerce-management
 
 # 2. Install PHP dependencies
 composer install
 
 # 3. Create the environment file and app key
-cp .env.example .env          # Windows (cmd): copy .env.example .env
-php artisan key:generate
+cp .env.example .env          # Windows (cmd / PowerShell): copy .env.example .env
+php artisan key: generate
 
 # 4. Create the SQLite database file
-touch database/database.sqlite   # Windows (cmd): type nul > database\database.sqlite
+touch database/database.sqlite   # Windows PowerShell: New-Item database\database.sqlite -ItemType File
+                                 # Windows cmd:        type nul > database\database.sqlite
 
 # 5. Create tables and demo data
 php artisan migrate --seed
 
-# 6. Make uploaded images publicly reachable
-php artisan storage:link
+# 6. Make uploaded images publicly accessible
+php artisan storage: link
 
 # 7. Run the app
 php artisan serve
